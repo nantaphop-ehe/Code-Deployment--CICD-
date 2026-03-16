@@ -5,11 +5,16 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> e4d8fae0065fe2a398a0772848f1ac7cdc2f36e9
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
+<<<<<<< HEAD
     - uses: actions/checkout@v3
     - name: Use Node.js
       uses: actions/setup-node@v3
@@ -17,3 +22,14 @@ jobs:
         node-version: '18.x'
     - run: npm install
     - run: echo "Tests would run here..."
+=======
+      - uses: actions/checkout@v3
+      
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          
+      - run: npm install
+      - run: echo "Tests would run here..."
+>>>>>>> e4d8fae0065fe2a398a0772848f1ac7cdc2f36e9

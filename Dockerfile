@@ -15,4 +15,4 @@ COPY package*.json ./
 RUN npm install --production
 COPY --from=builder /app/index.js ./index.js
 EXPOSE 3000
-CMD ["node", "index.js"]
+CMD ["node", "Index.js"]

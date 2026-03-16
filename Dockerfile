@@ -1,11 +1,18 @@
 # Use a light version of Node
-FROM node:18-alpine
-# Create app directory
-WORKDIR /usr/src/app
-# Install app dependencies
+# Stage 1: Build & Test
+FROM node:18-alpine AS builder
+WORKDIR /app
 COPY package*.json ./
 RUN npm install
-# Bundle app source
 COPY . .
+# Run tests during the build process
+RUN npm test
+# Stage 2: Production Run
+FROM node:18-alpine
+WORKDIR /app
+# Only copy the necessary files and production dependencies
+COPY package*.json ./
+RUN npm install --production
+COPY --from=builder /app/index.js ./index.js
 EXPOSE 3000
-CMD [ "node", "Index.js" ]
+CMD ["node", "index.js"]

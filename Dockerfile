@@ -13,6 +13,6 @@ WORKDIR /app
 # Only copy the necessary files and production dependencies
 COPY package*.json ./
 RUN npm install --production
-COPY --from=builder /app/index.js ./index.js
+COPY --from=builder /app/Index.js ./Index.js
 EXPOSE 3000
 CMD ["node", "Index.js"]
